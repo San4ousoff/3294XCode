@@ -10,4 +10,7 @@
    <FileRef
       location = "group:CW2">
    </FileRef>
+   <FileRef
+      location = "group:HW2">
+   </FileRef>
 </Workspace>
