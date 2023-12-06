@@ -18,6 +18,7 @@ class GroupsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
+        navigationItem.title = "Groups"
     }
     
 }
