@@ -13,13 +13,13 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
 
         let friendsViewController = FriendsViewController()
-        friendsViewController.tabBarItem = UITabBarItem(title: "Friends", image: UIImage(named: "person"), tag: 0)
+        friendsViewController.tabBarItem = UITabBarItem(title: "Friends", image: UIImage(systemName: "person"), tag: 0)
 
         let groupsViewController = GroupsViewController()
-        groupsViewController.tabBarItem = UITabBarItem(title: "Groups", image: UIImage(named: "group"), tag: 1)
+        groupsViewController.tabBarItem = UITabBarItem(title: "Groups", image: UIImage(systemName: "person.3"), tag: 1)
 
         let photosViewController = PhotosViewController()
-        photosViewController.tabBarItem = UITabBarItem(title: "Photos", image: UIImage(named: "photos"), tag: 2)
+        photosViewController.tabBarItem = UITabBarItem(title: "Photos", image: UIImage(systemName: "photo"), tag: 2)
 
         self.viewControllers = [friendsViewController, groupsViewController, photosViewController]
     }

@@ -16,6 +16,8 @@
 		04661B222B1F656C006C46EA /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04661B212B1F656C006C46EA /* FriendsViewController.swift */; };
 		04661B242B1F65AC006C46EA /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04661B232B1F65AC006C46EA /* GroupViewController.swift */; };
 		04661B262B1F65ED006C46EA /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04661B252B1F65ED006C46EA /* PhotosViewController.swift */; };
+		048268082B2064530032C0FF /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048268072B2064530032C0FF /* PhotoCell.swift */; };
+		0482680C2B206A400032C0FF /* CardCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482680B2B206A400032C0FF /* CardCollectionViewFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		04661B212B1F656C006C46EA /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		04661B232B1F65AC006C46EA /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		04661B252B1F65ED006C46EA /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		048268072B2064530032C0FF /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		0482680B2B206A400032C0FF /* CardCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,8 @@
 				04661B212B1F656C006C46EA /* FriendsViewController.swift */,
 				04661B232B1F65AC006C46EA /* GroupViewController.swift */,
 				04661B252B1F65ED006C46EA /* PhotosViewController.swift */,
+				048268072B2064530032C0FF /* PhotoCell.swift */,
+				0482680B2B206A400032C0FF /* CardCollectionViewFlowLayout.swift */,
 			);
 			path = HW2;
 			sourceTree = "<group>";
@@ -147,9 +153,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				04661B242B1F65AC006C46EA /* GroupViewController.swift in Sources */,
+				0482680C2B206A400032C0FF /* CardCollectionViewFlowLayout.swift in Sources */,
 				04661B102B1F6385006C46EA /* ViewController.swift in Sources */,
 				04661B222B1F656C006C46EA /* FriendsViewController.swift in Sources */,
 				04661B202B1F64D8006C46EA /* TabBarController.swift in Sources */,
+				048268082B2064530032C0FF /* PhotoCell.swift in Sources */,
 				04661B262B1F65ED006C46EA /* PhotosViewController.swift in Sources */,
 				04661B0C2B1F6385006C46EA /* AppDelegate.swift in Sources */,
 				04661B0E2B1F6385006C46EA /* SceneDelegate.swift in Sources */,

@@ -11,13 +11,27 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Добавляем кнопку "Enter"
-        let button = UIButton(frame: CGRect(x: 100, y: 100, width: 200, height: 60))
+        view.backgroundColor = .white
+
+        // Создаем кнопку "Enter"
+        let button = UIButton()
         button.setTitle("Enter", for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(enterButtonTapped), for: .touchUpInside)
-        view.backgroundColor = .white
+
         view.addSubview(button)
+        setupConstrants()
+        
+        func setupConstrants(){
+        // Определяем констрейнты для центрирования кнопки на экране
+            NSLayoutConstraint.activate([
+                button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                button.widthAnchor.constraint(equalToConstant: 200),
+                button.heightAnchor.constraint(equalToConstant: 60)
+            ])
+        }
     }
 
     @objc func enterButtonTapped() {
@@ -25,4 +39,5 @@ class ViewController: UIViewController {
         navigationController?.pushViewController(tabBarController, animated: true)
     }
 }
+
 
