@@ -36,7 +36,7 @@ extension GroupsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         cell.textLabel?.text = "Name Description"
-        cell.imageView?.image = UIImage(systemName: "heart")
+        cell.imageView?.image = UIImage(systemName: "person.3")
         return cell
     }
    
