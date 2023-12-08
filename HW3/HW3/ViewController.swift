@@ -20,16 +20,12 @@ class ViewController: UIViewController, WKNavigationDelegate {
         
         view.addSubview(webView)
         webView.frame = view.bounds
-        // Standalone-приложение
-        if let url = URL(string: "https://oauth.vk.com/authorize?client_id=51810260&display=mobile&redirect_uri=https://oauth.vk.com/blank.html&scope=friends,groups,photos&response_type=token") {
+        
+        // встраиваемое приложение
+        if let url = URL(string: "https://oauth.vk.com/authorize?client_id=51810008&display=mobile&redirect_uri=https://oauth.vk.com/blank.html&scope=friends,groups,photos&response_type=token&v=5.35&state=123456") {
             let request = URLRequest(url: url)
             webView.load(request)
         }
-        // встраиваемое приложение
-//        if let url = URL(string: "https://oauth.vk.com/authorize?client_id=51810008&display=mobile&redirect_uri=https://oauth.vk.com/blank.html&scope=friends,groups,photos&response_type=token") {
-//            let request = URLRequest(url: url)
-//            webView.load(request)
-//        }
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
@@ -37,6 +33,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
             decisionHandler(.allow)
             return
         }
+        // собираем словарь из полученной ссылки
         let params = fragment
             .components(separatedBy: "&")
             .map { $0.components(separatedBy: "=") }
@@ -47,10 +44,22 @@ class ViewController: UIViewController, WKNavigationDelegate {
                 dict[key] = value
                 return dict
         }
-        let token = params["access_token"]
-        let userID = params["user_id"]
-        print(token)
-        print(userID)
+        
+        // извлекаем токен и ID пользователя, если не получилось - сообщаем об ошибке
+        if let token = params["access_token"], let userId = params["user_id"] {
+            print("Token: \(token)")
+            print("User ID: \(userId)")
+            
+        // создание tabBarController с полученным токеном
+        let tabBarController = TabBarController(token: token)
+        // установка FriendsViewController как активного (может лишнее)
+        tabBarController.selectedViewController = tabBarController.viewControllers?[0]
+            
+        UIApplication.shared.windows.first?.rootViewController = tabBarController
+        } else {
+            print("Ошибка: Не удалось извлечь access_token и user_id из фрагмента URL")
+        }
+        
         decisionHandler(.cancel)
         webView.removeFromSuperview()
     }

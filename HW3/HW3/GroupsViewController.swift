@@ -1,5 +1,5 @@
 //
-//  GroupViewController.swift
+//  GroupsViewController.swift
 //  HW3
 //
 //  Created by Mac on 07.12.2023.
@@ -10,7 +10,17 @@ import UIKit
 class GroupsViewController: UIViewController {
 
     let tableView = UITableView()
-
+    var token: String?
+        
+        init(token: String) {
+            self.token = token
+            super.init(nibName: nil, bundle: nil)
+        }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,8 +29,21 @@ class GroupsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
+        
         setupConstraints()
         navigationItem.title = "Groups"
+        
+        let groupsRequestManager = GroupsRequestManager.shared
+        groupsRequestManager.token = token
+        groupsRequestManager.fetchFriends { result in
+        switch result {
+            case .success(let groups):
+                let formattedGroupsInfo = groups.map { "ID: \($0.id), Имя: \($0.name)"}
+                let formattedString = formattedGroupsInfo.joined(separator: "\n")
+                print("Отформатированный список групп:\n\(formattedString)")
+            case .failure(let error):
+                print("Ошибка загрузки списка групп: \(error)")
+        }
     }
     
     func setupConstraints() {
@@ -29,6 +52,7 @@ class GroupsViewController: UIViewController {
     }
 
     
+}
 }
 
 extension GroupsViewController: UITableViewDelegate {

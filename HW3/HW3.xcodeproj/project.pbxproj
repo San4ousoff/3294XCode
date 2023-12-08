@@ -14,12 +14,15 @@
 		045C2A7C2B21B84B00A94924 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045C2A7A2B21B84B00A94924 /* LaunchScreen.storyboard */; };
 		045C2A842B21B90600A94924 /* CardCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C2A832B21B90600A94924 /* CardCollectionViewFlowLayout.swift */; };
 		045C2A862B21B95800A94924 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C2A852B21B95800A94924 /* FriendsViewController.swift */; };
-		045C2A882B21B99300A94924 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C2A872B21B99300A94924 /* GroupViewController.swift */; };
+		045C2A882B21B99300A94924 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C2A872B21B99300A94924 /* GroupsViewController.swift */; };
 		045C2A8A2B21B9F200A94924 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C2A892B21B9F200A94924 /* PhotoCell.swift */; };
 		045C2A8C2B21BA3400A94924 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C2A8B2B21BA3400A94924 /* PhotoViewController.swift */; };
 		045C2A8E2B21BAA000A94924 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C2A8D2B21BAA000A94924 /* TabBarController.swift */; };
 		045C2A902B21BDE100A94924 /* ConstraintFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C2A8F2B21BDE000A94924 /* ConstraintFactory.swift */; };
-		0494C84A2B21EEEF00B70B63 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0494C8492B21EEEE00B70B63 /* WebViewController.swift */; };
+		0494C84A2B21EEEF00B70B63 /* _WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0494C8492B21EEEE00B70B63 /* _WebViewController.swift */; };
+		04CB309B2B238FF200AB4CF9 /* FriendsRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CB309A2B238FF200AB4CF9 /* FriendsRequestManager.swift */; };
+		04CB309D2B23B71C00AB4CF9 /* GroupsRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CB309C2B23B71C00AB4CF9 /* GroupsRequestManager.swift */; };
+		04CB309F2B23CF9D00AB4CF9 /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CB309E2B23CF9C00AB4CF9 /* TokenManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,12 +35,15 @@
 		045C2A7D2B21B84B00A94924 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		045C2A832B21B90600A94924 /* CardCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		045C2A852B21B95800A94924 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
-		045C2A872B21B99300A94924 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
+		045C2A872B21B99300A94924 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		045C2A892B21B9F200A94924 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		045C2A8B2B21BA3400A94924 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		045C2A8D2B21BAA000A94924 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		045C2A8F2B21BDE000A94924 /* ConstraintFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintFactory.swift; sourceTree = "<group>"; };
-		0494C8492B21EEEE00B70B63 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		0494C8492B21EEEE00B70B63 /* _WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _WebViewController.swift; sourceTree = "<group>"; };
+		04CB309A2B238FF200AB4CF9 /* FriendsRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsRequestManager.swift; sourceTree = "<group>"; };
+		04CB309C2B23B71C00AB4CF9 /* GroupsRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsRequestManager.swift; sourceTree = "<group>"; };
+		04CB309E2B23CF9C00AB4CF9 /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +81,7 @@
 				045C2A732B21B83900A94924 /* ViewController.swift */,
 				045C2A8D2B21BAA000A94924 /* TabBarController.swift */,
 				045C2A852B21B95800A94924 /* FriendsViewController.swift */,
-				045C2A872B21B99300A94924 /* GroupViewController.swift */,
+				045C2A872B21B99300A94924 /* GroupsViewController.swift */,
 				045C2A8B2B21BA3400A94924 /* PhotoViewController.swift */,
 				045C2A832B21B90600A94924 /* CardCollectionViewFlowLayout.swift */,
 				045C2A892B21B9F200A94924 /* PhotoCell.swift */,
@@ -83,7 +89,10 @@
 				045C2A7A2B21B84B00A94924 /* LaunchScreen.storyboard */,
 				045C2A7D2B21B84B00A94924 /* Info.plist */,
 				045C2A8F2B21BDE000A94924 /* ConstraintFactory.swift */,
-				0494C8492B21EEEE00B70B63 /* WebViewController.swift */,
+				0494C8492B21EEEE00B70B63 /* _WebViewController.swift */,
+				04CB309A2B238FF200AB4CF9 /* FriendsRequestManager.swift */,
+				04CB309C2B23B71C00AB4CF9 /* GroupsRequestManager.swift */,
+				04CB309E2B23CF9C00AB4CF9 /* TokenManager.swift */,
 			);
 			path = HW3;
 			sourceTree = "<group>";
@@ -159,8 +168,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				045C2A8A2B21B9F200A94924 /* PhotoCell.swift in Sources */,
-				0494C84A2B21EEEF00B70B63 /* WebViewController.swift in Sources */,
-				045C2A882B21B99300A94924 /* GroupViewController.swift in Sources */,
+				0494C84A2B21EEEF00B70B63 /* _WebViewController.swift in Sources */,
+				045C2A882B21B99300A94924 /* GroupsViewController.swift in Sources */,
+				04CB309B2B238FF200AB4CF9 /* FriendsRequestManager.swift in Sources */,
 				045C2A842B21B90600A94924 /* CardCollectionViewFlowLayout.swift in Sources */,
 				045C2A8E2B21BAA000A94924 /* TabBarController.swift in Sources */,
 				045C2A862B21B95800A94924 /* FriendsViewController.swift in Sources */,
@@ -168,7 +178,9 @@
 				045C2A8C2B21BA3400A94924 /* PhotoViewController.swift in Sources */,
 				045C2A702B21B83900A94924 /* AppDelegate.swift in Sources */,
 				045C2A722B21B83900A94924 /* SceneDelegate.swift in Sources */,
+				04CB309D2B23B71C00AB4CF9 /* GroupsRequestManager.swift in Sources */,
 				045C2A902B21BDE100A94924 /* ConstraintFactory.swift in Sources */,
+				04CB309F2B23CF9D00AB4CF9 /* TokenManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
