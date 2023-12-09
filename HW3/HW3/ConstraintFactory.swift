@@ -25,6 +25,4 @@ class ConstraintFactory {
             subview.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ]
     }
-    
-    // Другие методы для создания констрейнтов...
 }

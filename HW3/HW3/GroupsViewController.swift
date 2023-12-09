@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GroupsViewController: UIViewController {
+class GroupsViewController: UIViewController, UITableViewDelegate {
 
     let tableView = UITableView()
     var token: String?
@@ -46,17 +46,11 @@ class GroupsViewController: UIViewController {
         }
     }
     
-    func setupConstraints() {
-        view.addSubview(tableView)
-        NSLayoutConstraint.activate(ConstraintFactory.pinToEdges(of: view, withSubview: tableView))
+        func setupConstraints() {
+            view.addSubview(tableView)
+            NSLayoutConstraint.activate(ConstraintFactory.pinToEdges(of: view, withSubview: tableView))
+        }
     }
-
-    
-}
-}
-
-extension GroupsViewController: UITableViewDelegate {
-    
 }
 
 extension GroupsViewController: UITableViewDataSource {

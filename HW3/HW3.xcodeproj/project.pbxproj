@@ -19,6 +19,7 @@
 		045C2A8C2B21BA3400A94924 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C2A8B2B21BA3400A94924 /* PhotoViewController.swift */; };
 		045C2A8E2B21BAA000A94924 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C2A8D2B21BAA000A94924 /* TabBarController.swift */; };
 		045C2A902B21BDE100A94924 /* ConstraintFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C2A8F2B21BDE000A94924 /* ConstraintFactory.swift */; };
+		047CB04D2B24E1A300B7EF21 /* PhotoRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CB04C2B24E1A200B7EF21 /* PhotoRequestManager.swift */; };
 		0494C84A2B21EEEF00B70B63 /* _WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0494C8492B21EEEE00B70B63 /* _WebViewController.swift */; };
 		04CB309B2B238FF200AB4CF9 /* FriendsRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CB309A2B238FF200AB4CF9 /* FriendsRequestManager.swift */; };
 		04CB309D2B23B71C00AB4CF9 /* GroupsRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CB309C2B23B71C00AB4CF9 /* GroupsRequestManager.swift */; };
@@ -40,6 +41,7 @@
 		045C2A8B2B21BA3400A94924 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		045C2A8D2B21BAA000A94924 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		045C2A8F2B21BDE000A94924 /* ConstraintFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintFactory.swift; sourceTree = "<group>"; };
+		047CB04C2B24E1A200B7EF21 /* PhotoRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRequestManager.swift; sourceTree = "<group>"; };
 		0494C8492B21EEEE00B70B63 /* _WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _WebViewController.swift; sourceTree = "<group>"; };
 		04CB309A2B238FF200AB4CF9 /* FriendsRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsRequestManager.swift; sourceTree = "<group>"; };
 		04CB309C2B23B71C00AB4CF9 /* GroupsRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsRequestManager.swift; sourceTree = "<group>"; };
@@ -83,16 +85,17 @@
 				045C2A852B21B95800A94924 /* FriendsViewController.swift */,
 				045C2A872B21B99300A94924 /* GroupsViewController.swift */,
 				045C2A8B2B21BA3400A94924 /* PhotoViewController.swift */,
-				045C2A832B21B90600A94924 /* CardCollectionViewFlowLayout.swift */,
-				045C2A892B21B9F200A94924 /* PhotoCell.swift */,
-				045C2A782B21B84B00A94924 /* Assets.xcassets */,
-				045C2A7A2B21B84B00A94924 /* LaunchScreen.storyboard */,
-				045C2A7D2B21B84B00A94924 /* Info.plist */,
-				045C2A8F2B21BDE000A94924 /* ConstraintFactory.swift */,
-				0494C8492B21EEEE00B70B63 /* _WebViewController.swift */,
 				04CB309A2B238FF200AB4CF9 /* FriendsRequestManager.swift */,
 				04CB309C2B23B71C00AB4CF9 /* GroupsRequestManager.swift */,
+				047CB04C2B24E1A200B7EF21 /* PhotoRequestManager.swift */,
+				045C2A832B21B90600A94924 /* CardCollectionViewFlowLayout.swift */,
+				045C2A892B21B9F200A94924 /* PhotoCell.swift */,
+				045C2A8F2B21BDE000A94924 /* ConstraintFactory.swift */,
 				04CB309E2B23CF9C00AB4CF9 /* TokenManager.swift */,
+				0494C8492B21EEEE00B70B63 /* _WebViewController.swift */,
+				045C2A7A2B21B84B00A94924 /* LaunchScreen.storyboard */,
+				045C2A782B21B84B00A94924 /* Assets.xcassets */,
+				045C2A7D2B21B84B00A94924 /* Info.plist */,
 			);
 			path = HW3;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 				0494C84A2B21EEEF00B70B63 /* _WebViewController.swift in Sources */,
 				045C2A882B21B99300A94924 /* GroupsViewController.swift in Sources */,
 				04CB309B2B238FF200AB4CF9 /* FriendsRequestManager.swift in Sources */,
+				047CB04D2B24E1A300B7EF21 /* PhotoRequestManager.swift in Sources */,
 				045C2A842B21B90600A94924 /* CardCollectionViewFlowLayout.swift in Sources */,
 				045C2A8E2B21BAA000A94924 /* TabBarController.swift in Sources */,
 				045C2A862B21B95800A94924 /* FriendsViewController.swift in Sources */,

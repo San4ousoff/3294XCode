@@ -7,44 +7,69 @@
 
 import UIKit
 
-class PhotosViewController: UIViewController {
+class PhotosViewController: UIViewController, UICollectionViewDelegate {
+    
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: CardCollectionViewFlowLayout())
-    let data = [("Person1", "Alice"), ("Person2", "Bob"), ("Person3", "Charlie"), ("Person4", "David"), ("Person5", "Eve"), ("Person6", "Frank")]
-
+    var token: String?
+    var photos: [Photo] = []
+    
+    init(token: String) {
+        self.token = token
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        let customLayout = CardCollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: customLayout)
+            
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: "photoCell")
         collectionView.backgroundColor = .white
-
+            
         view.addSubview(collectionView)
         setupConstraints()
-        navigationItem.title = "Photos" 
+        navigationItem.title = "Photos"
+
+        let photoRequestManager = PhotoRequestManager.shared
+        photoRequestManager.token = token
+        photoRequestManager.fetchPhotos { result in
+            switch result {
+            case .success(let photos):
+                let formattedPhotosInfo: [String] = photos.map { photo in
+                    let urls = photo.sizes.map { $0.url }
+                    return "URLs: \(urls.joined(separator: ", "))" // объединяем URL через запятую
+                }
+                let formattedString = formattedPhotosInfo.joined(separator: "\n")
+                print("Список URL фото:\n\(formattedString)")
+            case .failure(let error):
+                print("Ошибка загрузки списка фотографий: \(error)")
+            }
+        }
+
+        func setupConstraints() {
+            view.addSubview(collectionView)
+            NSLayoutConstraint.activate(ConstraintFactory.pinToEdges(of: view, withSubview: collectionView))
+        }
     }
-
-    func setupConstraints() {
-        view.addSubview(collectionView)
-        NSLayoutConstraint.activate(ConstraintFactory.pinToEdges(of: view, withSubview: collectionView))
-    }
-
-}
-
-extension PhotosViewController: UICollectionViewDelegate {
-    
 }
 
 extension PhotosViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
+        return 10 // Замените 10 на количество карточек, которые вы хотите отобразить
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCell
-        cell.imageView.image = UIImage(named: data[indexPath.row].0)
-        cell.label.text = data[indexPath.row].1
+        cell.imageView.image = UIImage(systemName: "photo") // Замените "placeholder_image" на ваше изображение
+        cell.label.text = "Photo" // Замените на текст, который вы хотите отобразить
         return cell
     }
 }
+

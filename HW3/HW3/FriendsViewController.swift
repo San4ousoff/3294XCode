@@ -10,7 +10,6 @@ import UIKit
 class FriendsViewController: UIViewController {
 
     let tableView = UITableView()
-    
     var token: String?
         
         init(token: String) {
@@ -32,13 +31,30 @@ class FriendsViewController: UIViewController {
         view.addSubview(tableView)
         setupConstraints()
         navigationItem.title = "Friends"
+        
+        // создаем экземпляр FriendsRequestManager
+        let friendsRequestManager = FriendsRequestManager.shared
+        // устанавливаем токен для FriendsRequestManager
+        friendsRequestManager.token = token
+        // загружаем и форматируем список друзей из FriendsRequestManager
+        friendsRequestManager.fetchFriends { result in
+            switch result {
+            case .success(let friends):
+                // Обработка успешного получения списка друзей
+                let formattedFriendsInfo = friends.map { "ID: \($0.id), Имя: \($0.firstName), Фамилия: \($0.lastName)" }
+                        let formattedString = formattedFriendsInfo.joined(separator: "\n")
+                        print("Отформатированный список друзей:\n\(formattedString)")
+            case .failure(let error):
+                // Обработка ошибки загрузки
+                print("Ошибка загрузки списка друзей: \(error)")
+            }
+        }
+        
+        func setupConstraints() {
+            view.addSubview(tableView)
+            NSLayoutConstraint.activate(ConstraintFactory.pinToEdges(of: view, withSubview: tableView))
+        }
     }
-    
-    func setupConstraints() {
-        view.addSubview(tableView)
-        NSLayoutConstraint.activate(ConstraintFactory.pinToEdges(of: view, withSubview: tableView))
-    }
-
 }
 
 extension FriendsViewController: UITableViewDelegate {

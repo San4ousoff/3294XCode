@@ -46,9 +46,6 @@ class FriendsRequestManager: TokenManager {
                     if let error = error {
                         completion(.failure(error))
                     } else if let data = data {
-//                        if let dataString = String(data: data, encoding: .utf8) {
-//                            print(dataString)  // вывод полученной JSON строки
-//                        }
                         do {
                             let decoder = JSONDecoder()
                             let friendsResponse = try decoder.decode(FriendsResponse.self, from: data)
