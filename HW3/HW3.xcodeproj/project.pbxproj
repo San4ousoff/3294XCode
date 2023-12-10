@@ -78,6 +78,7 @@
 		045C2A6E2B21B83900A94924 /* HW3 */ = {
 			isa = PBXGroup;
 			children = (
+				048820812B263CE20063C725 /* RequestManager */,
 				045C2A6F2B21B83900A94924 /* AppDelegate.swift */,
 				045C2A712B21B83900A94924 /* SceneDelegate.swift */,
 				045C2A732B21B83900A94924 /* ViewController.swift */,
@@ -85,9 +86,6 @@
 				045C2A852B21B95800A94924 /* FriendsViewController.swift */,
 				045C2A872B21B99300A94924 /* GroupsViewController.swift */,
 				045C2A8B2B21BA3400A94924 /* PhotoViewController.swift */,
-				04CB309A2B238FF200AB4CF9 /* FriendsRequestManager.swift */,
-				04CB309C2B23B71C00AB4CF9 /* GroupsRequestManager.swift */,
-				047CB04C2B24E1A200B7EF21 /* PhotoRequestManager.swift */,
 				045C2A832B21B90600A94924 /* CardCollectionViewFlowLayout.swift */,
 				045C2A892B21B9F200A94924 /* PhotoCell.swift */,
 				045C2A8F2B21BDE000A94924 /* ConstraintFactory.swift */,
@@ -98,6 +96,16 @@
 				045C2A7D2B21B84B00A94924 /* Info.plist */,
 			);
 			path = HW3;
+			sourceTree = "<group>";
+		};
+		048820812B263CE20063C725 /* RequestManager */ = {
+			isa = PBXGroup;
+			children = (
+				047CB04C2B24E1A200B7EF21 /* PhotoRequestManager.swift */,
+				04CB309C2B23B71C00AB4CF9 /* GroupsRequestManager.swift */,
+				04CB309A2B238FF200AB4CF9 /* FriendsRequestManager.swift */,
+			);
+			path = RequestManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
