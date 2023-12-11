@@ -22,18 +22,15 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let friendsViewController = FriendsViewController(token: token)
-        friendsViewController.title = "Friends"
+        let friendsViewController = UINavigationController(rootViewController: FriendsViewController(token: token))
         friendsViewController.tabBarItem = UITabBarItem(title: "Friends", image: UIImage(systemName: "person.circle"), tag: 0)
         
-        let groupsViewController = GroupsViewController(token: token)
-        groupsViewController.title = "Groups"
+        let groupsViewController = UINavigationController(rootViewController: GroupsViewController(token: token))
         groupsViewController.tabBarItem = UITabBarItem(title: "Groups", image: UIImage(systemName: "person.3"), tag: 1)
         
-        let photosViewController = PhotosViewController(token: token)
-        photosViewController.title = "Photos"
-        photosViewController.tabBarItem = UITabBarItem(title: "Photos", image: UIImage(systemName: "photo.circle"), tag: 2)
+        let photoViewController = UINavigationController(rootViewController: PhotoViewController(token: token))
+        photoViewController.tabBarItem = UITabBarItem(title: "Photos", image: UIImage(systemName: "photo.circle"), tag: 2)
 
-        viewControllers = [friendsViewController, groupsViewController, photosViewController]
+        viewControllers = [friendsViewController, groupsViewController, photoViewController]
     }
 }
