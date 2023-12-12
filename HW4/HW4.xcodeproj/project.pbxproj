@@ -118,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				048820532B262A630063C725 /* ViewController.swift */,
+				048820632B262B910063C725 /* TabBarController.swift */,
 				048820652B262C4D0063C725 /* FriendsViewController.swift */,
 				048820672B262C8E0063C725 /* GroupsViewController.swift */,
 				048820692B262CE70063C725 /* PhotoViewController.swift */,
@@ -130,7 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				048820512B262A630063C725 /* SceneDelegate.swift */,
-				048820632B262B910063C725 /* TabBarController.swift */,
 				0488206B2B262D230063C725 /* FriendsRequestManager.swift */,
 				0488206D2B262D800063C725 /* GroupsRequestManager.swift */,
 				0488206F2B262DB70063C725 /* PhotoRequestManager.swift */,
