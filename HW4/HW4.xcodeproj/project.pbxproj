@@ -142,8 +142,8 @@
 		048B00EE2B27A3C7000C194C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				048820752B2630B60063C725 /* ConstraintFactory.swift */,
 				0488207B2B2635B70063C725 /* DataFetcher.swift */,
+				048820752B2630B60063C725 /* ConstraintFactory.swift */,
 				048820712B262E4C0063C725 /* CardCollectionViewFlowLayout.swift */,
 			);
 			path = Helpers;
