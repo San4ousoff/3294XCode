@@ -2,6 +2,18 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:HW5SwiftUI/HW5SwiftUI.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:CW5SwiftUI/CW5SwiftUI.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:CW5storyboard/CW5storyboard.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:CW5/CW5.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:HW4/HW4.xcodeproj">
    </FileRef>
    <FileRef
