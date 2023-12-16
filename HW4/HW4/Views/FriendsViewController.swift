@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol FriendsViewControllerDelegate: AnyObject {
+    func didSelectFriend(withID userID: String)
+}
+
 class FriendsViewController: UITableViewController {
     var token: String?
     var friends: [Friend] = []
+    weak var delegate: FriendsViewControllerDelegate?
+    let friendIDProvider = FriendIDProvider()
 
     init(token: String) {
         self.token = token
@@ -23,9 +29,10 @@ class FriendsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Друзья"
+        setupNavigationBar()
         fetchFriends()
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return friends.count
     }
@@ -45,19 +52,38 @@ class FriendsViewController: UITableViewController {
         return cell
     }
 
+    private func setupNavigationBar() {
+        let profileButton = UIBarButtonItem(title: "Профиль", style: .plain, target: self, action: #selector(profileButtonTapped))
+        navigationItem.rightBarButtonItem = profileButton
+    }
+
+    @objc private func profileButtonTapped() {
+        let profileViewController = ProfileViewController()
+        navigationController?.pushViewController(profileViewController, animated: true)
+    }
+
+
     func fetchFriends() {
         let friendsRequestManager = FriendsRequestManager.shared
         friendsRequestManager.token = token
         friendsRequestManager.fetchFriends { result in
             switch result {
-                case .success(let fetchedFriends):
-                    self.friends = fetchedFriends.sorted { ($0.isOnline != 0) && ($1.isOnline == 0) } // сортировка
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                case .failure(let error):
-                    print("Ошибка загрузки списка друзей: \(error)")
+            case .success(let fetchedFriends):
+                self.friends = fetchedFriends.sorted { ($0.isOnline != 0) && ($1.isOnline == 0) }
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            case .failure(let error):
+                print("Ошибка загрузки списка друзей: \(error)")
             }
         }
     }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedFriend = friends[indexPath.row]
+        let friendID = friendIDProvider.getFriendID(from: selectedFriend)
+        print("Выбран ID друга: \(friendID)")
+        delegate?.didSelectFriend(withID: friendID)
+    }
 }
+

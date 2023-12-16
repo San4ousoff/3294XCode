@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		047D09252B2C51B300A7B979 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D09242B2C51B300A7B979 /* ProfileViewController.swift */; };
+		047D092B2B2C6DE400A7B979 /* FriendIDProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D092A2B2C6DE300A7B979 /* FriendIDProvider.swift */; };
+		047D092D2B2C85D700A7B979 /* PhotoProfileByIDRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D092C2B2C85D700A7B979 /* PhotoProfileByIDRequestManager.swift */; };
 		048820502B262A630063C725 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488204F2B262A630063C725 /* AppDelegate.swift */; };
 		048820522B262A630063C725 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048820512B262A630063C725 /* SceneDelegate.swift */; };
 		048820542B262A630063C725 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048820532B262A630063C725 /* ViewController.swift */; };
@@ -30,6 +33,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		047D09242B2C51B300A7B979 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		047D092A2B2C6DE300A7B979 /* FriendIDProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendIDProvider.swift; sourceTree = "<group>"; };
+		047D092C2B2C85D700A7B979 /* PhotoProfileByIDRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoProfileByIDRequestManager.swift; sourceTree = "<group>"; };
 		0488204C2B262A630063C725 /* HW4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HW4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0488204F2B262A630063C725 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		048820512B262A630063C725 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +129,7 @@
 				048820672B262C8E0063C725 /* GroupsViewController.swift */,
 				048820692B262CE70063C725 /* PhotoViewController.swift */,
 				048820732B26306D0063C725 /* PhotoCell.swift */,
+				047D09242B2C51B300A7B979 /* ProfileViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -135,6 +142,7 @@
 				0488206D2B262D800063C725 /* GroupsRequestManager.swift */,
 				0488206F2B262DB70063C725 /* PhotoRequestManager.swift */,
 				048820772B2630E70063C725 /* TokenManager.swift */,
+				047D092C2B2C85D700A7B979 /* PhotoProfileByIDRequestManager.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -145,6 +153,7 @@
 				0488207B2B2635B70063C725 /* DataFetcher.swift */,
 				048820752B2630B60063C725 /* ConstraintFactory.swift */,
 				048820712B262E4C0063C725 /* CardCollectionViewFlowLayout.swift */,
+				047D092A2B2C6DE300A7B979 /* FriendIDProvider.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -221,6 +230,7 @@
 			files = (
 				0488207E2B2638400063C725 /* GroupsStruct.swift in Sources */,
 				048820802B2638F40063C725 /* PhotoStruct.swift in Sources */,
+				047D092D2B2C85D700A7B979 /* PhotoProfileByIDRequestManager.swift in Sources */,
 				048820542B262A630063C725 /* ViewController.swift in Sources */,
 				048820662B262C4D0063C725 /* FriendsViewController.swift in Sources */,
 				048820682B262C8E0063C725 /* GroupsViewController.swift in Sources */,
@@ -228,10 +238,12 @@
 				048820742B26306D0063C725 /* PhotoCell.swift in Sources */,
 				0488207A2B2635770063C725 /* FriendsStruct.swift in Sources */,
 				048820702B262DB70063C725 /* PhotoRequestManager.swift in Sources */,
+				047D09252B2C51B300A7B979 /* ProfileViewController.swift in Sources */,
 				0488207C2B2635B70063C725 /* DataFetcher.swift in Sources */,
 				0488206A2B262CE70063C725 /* PhotoViewController.swift in Sources */,
 				048820722B262E4D0063C725 /* CardCollectionViewFlowLayout.swift in Sources */,
 				0488206C2B262D230063C725 /* FriendsRequestManager.swift in Sources */,
+				047D092B2B2C6DE400A7B979 /* FriendIDProvider.swift in Sources */,
 				048820502B262A630063C725 /* AppDelegate.swift in Sources */,
 				048820522B262A630063C725 /* SceneDelegate.swift in Sources */,
 				0488206E2B262D800063C725 /* GroupsRequestManager.swift in Sources */,

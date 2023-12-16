@@ -32,5 +32,11 @@ class TabBarController: UITabBarController {
         photoViewController.tabBarItem = UITabBarItem(title: "Photos", image: UIImage(systemName: "photo.circle"), tag: 2)
 
         viewControllers = [friendsViewController, groupsViewController, photoViewController]
+        
+        viewControllers?.forEach {
+            if let navController = $0 as? UINavigationController {
+                navController.popToRootViewController(animated: false)
+            }
+        }
     }
 }
