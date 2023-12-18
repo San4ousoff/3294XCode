@@ -7,14 +7,9 @@
 
 import UIKit
 
-protocol FriendsViewControllerDelegate: AnyObject {
-    func didSelectFriend(withID userID: String)
-}
-
 class FriendsViewController: UITableViewController {
     var token: String?
     var friends: [Friend] = []
-    weak var delegate: FriendsViewControllerDelegate?
     let friendIDProvider = FriendIDProvider()
 
     init(token: String) {
@@ -29,7 +24,7 @@ class FriendsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Друзья"
-        setupNavigationBar()
+//        setupNavigationBar()
         fetchFriends()
     }
 
@@ -52,16 +47,16 @@ class FriendsViewController: UITableViewController {
         return cell
     }
 
-    private func setupNavigationBar() {
-        let profileButton = UIBarButtonItem(title: "Профиль", style: .plain, target: self, action: #selector(profileButtonTapped))
-        navigationItem.rightBarButtonItem = profileButton
-    }
-
-    @objc private func profileButtonTapped() {
-        let profileViewController = ProfileViewController()
-        navigationController?.pushViewController(profileViewController, animated: true)
-    }
-
+//    private func setupNavigationBar() {
+//        let profileButton = UIBarButtonItem(title: "Профиль", style: .plain, target: self, action: #selector(profileButtonTapped))
+//        navigationItem.rightBarButtonItem = profileButton
+//    }
+//
+//    @objc func profileButtonTapped() {
+//        let profileViewController = ProfileViewController()
+//        profileViewController.friendID = friendID  // Передаем friendID в ProfileViewController
+//        navigationController?.pushViewController(profileViewController, animated: true)
+//    }
 
     func fetchFriends() {
         let friendsRequestManager = FriendsRequestManager.shared
@@ -83,8 +78,10 @@ class FriendsViewController: UITableViewController {
         let selectedFriend = friends[indexPath.row]
         let friendID = friendIDProvider.getFriendID(from: selectedFriend)
         print("Выбран ID друга: \(friendID)")
-        delegate?.didSelectFriend(withID: friendID)
+        
+        let profileViewController = ProfileViewController()
+        profileViewController.friendID = friendID  // Передаем friendID в ProfileViewController
+        navigationController?.pushViewController(profileViewController, animated: true)
     }
-    
 }
 
