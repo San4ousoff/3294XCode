@@ -85,5 +85,6 @@ class FriendsViewController: UITableViewController {
         print("Выбран ID друга: \(friendID)")
         delegate?.didSelectFriend(withID: friendID)
     }
+    
 }
 

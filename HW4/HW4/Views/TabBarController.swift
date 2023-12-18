@@ -33,10 +33,5 @@ class TabBarController: UITabBarController {
 
         viewControllers = [friendsViewController, groupsViewController, photoViewController]
         
-        viewControllers?.forEach {
-            if let navController = $0 as? UINavigationController {
-                navController.popToRootViewController(animated: false)
-            }
-        }
     }
 }
