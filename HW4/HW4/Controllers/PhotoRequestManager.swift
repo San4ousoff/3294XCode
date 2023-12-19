@@ -15,7 +15,6 @@ class PhotoRequestManager: TokenManager {
         do {
             let token = try validateToken()
             let urlString = "https://api.vk.com/method/photos.get?album_id=profile&access_token=\(token)&v=5.131"
-            
             if let url = URL(string: urlString) {
                 DataFetcher.fetchData(from: url, responseType: PhotosResponse.self) { (result: Result<PhotosResponse, Error>) in
                     switch result {

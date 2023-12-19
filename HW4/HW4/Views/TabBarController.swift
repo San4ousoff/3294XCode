@@ -9,9 +9,11 @@ import UIKit
 
 class TabBarController: UITabBarController {
     var token: String
+    var userID: String
 
-    init(token: String) {
+    init(token: String, userID: String) {
         self.token = token
+        self.userID = userID
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -22,7 +24,7 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let friendsViewController = UINavigationController(rootViewController: FriendsViewController(token: token))
+        let friendsViewController = UINavigationController(rootViewController: FriendsViewController(token: token, userID: userID))
         friendsViewController.tabBarItem = UITabBarItem(title: "Friends", image: UIImage(systemName: "person.circle"), tag: 0)
         
         let groupsViewController = UINavigationController(rootViewController: GroupsViewController(token: token))

@@ -9,6 +9,9 @@ import UIKit
 import WebKit
 
 class ViewController: UIViewController, WKNavigationDelegate {
+    var token: String?
+    var userID: String?
+    
     private lazy var webView: WKWebView = {
         let webView = WKWebView()
         webView.navigationDelegate = self
@@ -46,12 +49,17 @@ class ViewController: UIViewController, WKNavigationDelegate {
         }
         
         // извлекаем токен и ID пользователя, если не получилось - сообщаем об ошибке
-        if let token = params["access_token"], let userId = params["user_id"] {
+        if let token = params["access_token"], let userID = params["user_id"] {
             print("Token: \(token)")
-            print("User ID: \(userId)")
+            print("User ID: \(userID)")
+            self.token = token
+            self.userID = userID
             
         // создаем экземпляр tabBarController с полученным токеном
-        let tabBarController = TabBarController(token: token)
+            let tabBarController = TabBarController(token: token, userID: userID)
+
+        let friendsViewController = FriendsViewController(token: token, userID: userID)
+        self.navigationController?.pushViewController(friendsViewController, animated: true)
 
         UIApplication.shared.windows.first?.rootViewController = tabBarController
         } else {

@@ -8,12 +8,15 @@
 import UIKit
 
 class FriendsViewController: UITableViewController {
-    var token: String?
+    var token: String
+    var userID: String
+    
     var friends: [Friend] = []
     let friendIDProvider = FriendIDProvider()
 
-    init(token: String) {
+    init(token: String, userID: String) {
         self.token = token
+        self.userID = userID
         super.init(style: .plain)
     }
 
@@ -62,17 +65,20 @@ class FriendsViewController: UITableViewController {
             }
         }
     }
-    
+    // кнопка Профиль в навигации
     private func setupNavigationBar() {
         let profileButton = UIBarButtonItem(title: "Профиль", style: .plain, target: self, action: #selector(profileButtonTapped))
         navigationItem.rightBarButtonItem = profileButton
     }
-
+    // при нажатии на кнопку Профиль, переходим в профиль владельца приложения, тк передаем его ID во вью Профиля
     @objc private func profileButtonTapped() {
         let profileViewController = ProfileViewController()
+        profileViewController.friendID = self.userID
+        profileViewController.token = self.token
+        //print(profileViewController.token)
         navigationController?.pushViewController(profileViewController, animated: true)
     }
-
+    // при нажатии на ячейку друга, переходим в профиль друга, тк передаем его ID во вью Профиля
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedFriend = friends[indexPath.row]
         let friendID = friendIDProvider.getFriendID(from: selectedFriend)
