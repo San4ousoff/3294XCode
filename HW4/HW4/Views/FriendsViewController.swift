@@ -24,7 +24,7 @@ class FriendsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Друзья"
-//        setupNavigationBar()
+        setupNavigationBar()
         fetchFriends()
     }
 
@@ -47,17 +47,6 @@ class FriendsViewController: UITableViewController {
         return cell
     }
 
-//    private func setupNavigationBar() {
-//        let profileButton = UIBarButtonItem(title: "Профиль", style: .plain, target: self, action: #selector(profileButtonTapped))
-//        navigationItem.rightBarButtonItem = profileButton
-//    }
-//
-//    @objc func profileButtonTapped() {
-//        let profileViewController = ProfileViewController()
-//        profileViewController.friendID = friendID  // Передаем friendID в ProfileViewController
-//        navigationController?.pushViewController(profileViewController, animated: true)
-//    }
-
     func fetchFriends() {
         let friendsRequestManager = FriendsRequestManager.shared
         friendsRequestManager.token = token
@@ -73,6 +62,16 @@ class FriendsViewController: UITableViewController {
             }
         }
     }
+    
+    private func setupNavigationBar() {
+        let profileButton = UIBarButtonItem(title: "Профиль", style: .plain, target: self, action: #selector(profileButtonTapped))
+        navigationItem.rightBarButtonItem = profileButton
+    }
+
+    @objc private func profileButtonTapped() {
+        let profileViewController = ProfileViewController()
+        navigationController?.pushViewController(profileViewController, animated: true)
+    }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedFriend = friends[indexPath.row]
@@ -81,6 +80,7 @@ class FriendsViewController: UITableViewController {
         
         let profileViewController = ProfileViewController()
         profileViewController.friendID = friendID  // Передаем friendID в ProfileViewController
+        profileViewController.token = token  // Передаем токен в ProfileViewController
         navigationController?.pushViewController(profileViewController, animated: true)
     }
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04663BED2B308CFF009CF68F /* FrendInfoByIDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04663BEC2B308CFF009CF68F /* FrendInfoByIDManager.swift */; };
+		04663BEF2B30904D009CF68F /* FriendInfoStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04663BEE2B30904D009CF68F /* FriendInfoStruct.swift */; };
+		0468541B2B317B51005245D3 /* FriendInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468541A2B317B51005245D3 /* FriendInfoCell.swift */; };
 		047D09252B2C51B300A7B979 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D09242B2C51B300A7B979 /* ProfileViewController.swift */; };
 		047D092B2B2C6DE400A7B979 /* FriendIDProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D092A2B2C6DE300A7B979 /* FriendIDProvider.swift */; };
 		047D092D2B2C85D700A7B979 /* PhotoProfileByIDRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D092C2B2C85D700A7B979 /* PhotoProfileByIDRequestManager.swift */; };
@@ -33,6 +36,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04663BEC2B308CFF009CF68F /* FrendInfoByIDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrendInfoByIDManager.swift; sourceTree = "<group>"; };
+		04663BEE2B30904D009CF68F /* FriendInfoStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendInfoStruct.swift; sourceTree = "<group>"; };
+		0468541A2B317B51005245D3 /* FriendInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendInfoCell.swift; sourceTree = "<group>"; };
 		047D09242B2C51B300A7B979 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		047D092A2B2C6DE300A7B979 /* FriendIDProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendIDProvider.swift; sourceTree = "<group>"; };
 		047D092C2B2C85D700A7B979 /* PhotoProfileByIDRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoProfileByIDRequestManager.swift; sourceTree = "<group>"; };
@@ -108,6 +114,7 @@
 				048820792B2635760063C725 /* FriendsStruct.swift */,
 				0488207D2B2638400063C725 /* GroupsStruct.swift */,
 				0488207F2B2638F40063C725 /* PhotoStruct.swift */,
+				04663BEE2B30904D009CF68F /* FriendInfoStruct.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -130,6 +137,7 @@
 				048820692B262CE70063C725 /* PhotoViewController.swift */,
 				048820732B26306D0063C725 /* PhotoCell.swift */,
 				047D09242B2C51B300A7B979 /* ProfileViewController.swift */,
+				0468541A2B317B51005245D3 /* FriendInfoCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -143,6 +151,7 @@
 				0488206F2B262DB70063C725 /* PhotoRequestManager.swift */,
 				048820772B2630E70063C725 /* TokenManager.swift */,
 				047D092C2B2C85D700A7B979 /* PhotoProfileByIDRequestManager.swift */,
+				04663BEC2B308CFF009CF68F /* FrendInfoByIDManager.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -229,7 +238,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0488207E2B2638400063C725 /* GroupsStruct.swift in Sources */,
+				04663BEF2B30904D009CF68F /* FriendInfoStruct.swift in Sources */,
 				048820802B2638F40063C725 /* PhotoStruct.swift in Sources */,
+				0468541B2B317B51005245D3 /* FriendInfoCell.swift in Sources */,
 				047D092D2B2C85D700A7B979 /* PhotoProfileByIDRequestManager.swift in Sources */,
 				048820542B262A630063C725 /* ViewController.swift in Sources */,
 				048820662B262C4D0063C725 /* FriendsViewController.swift in Sources */,
@@ -247,6 +258,7 @@
 				048820502B262A630063C725 /* AppDelegate.swift in Sources */,
 				048820522B262A630063C725 /* SceneDelegate.swift in Sources */,
 				0488206E2B262D800063C725 /* GroupsRequestManager.swift in Sources */,
+				04663BED2B308CFF009CF68F /* FrendInfoByIDManager.swift in Sources */,
 				048820762B2630B60063C725 /* ConstraintFactory.swift in Sources */,
 				048820782B2630E70063C725 /* TokenManager.swift in Sources */,
 			);

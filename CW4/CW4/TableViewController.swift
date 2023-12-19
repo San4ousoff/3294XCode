@@ -17,8 +17,23 @@ class TableViewController: UITableViewController {
         
         view.backgroundColor = .white
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
+        
+        let userDefault = UserDefaults.standard // создаем экземпляр UserDefaults для хранения данных
+        if let towns = userDefault.data(forKey: "towns") {
+            guard let data = try? PropertyListDecoder().decode([Town].self, from: towns) else {return}
+            self.towns = data
+            print("userDefault:", self.towns)
+            DispatchQueue.main.async { // обращаемся к основной очереди асинхронно
+                self.tableView.reloadData()
+            }
+        } // вызов сохраненных данных по ключу с обновлением таблицы в основном потоке
+        
         networkService.getData{ [weak self] towns in
             self?.towns = towns
+            if let data = try? PropertyListEncoder().encode(towns) {
+                userDefault.setValue(data, forKey: "towns") // сохраняем полученные значения в памяти
+            }
+            
             DispatchQueue.main.async { // обращаемся к основной очереди асинхронно
                 self?.tableView.reloadData()
             }

@@ -7,22 +7,74 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
-    
+class ProfileViewController: UICollectionViewController {
+
     var friendID: String?
-    let friendIDLabel = UILabel()
-    
+    var token: String?
+    var friendInfo: FriendInfo? // Переменная для хранения информации о друге
+    let reuseIdentifier = "Cell"
+
+    init() {
+        let layout = UICollectionViewFlowLayout()
+        super.init(collectionViewLayout: layout)
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .yellow
-        title = "Профиль"
-        
-        friendIDLabel.text = friendID ?? "Нет friendID"
-        friendIDLabel.textAlignment = .center
-        friendIDLabel.frame = CGRect(x: 20, y: 200, width: view.frame.width - 40, height: 40)
-        view.addSubview(friendIDLabel)
+        collectionView.backgroundColor = .white
+        collectionView.register(FriendInfoCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        fetchFriendInfo()
+    }
+
+        // Загрузка информации о друге
+        func fetchFriendInfo() {
+            if let friendID = friendID, let token = token {
+                FriendInfoByIDManager.shared.token = token
+                FriendInfoByIDManager.shared.fetchFriendInfo(userID: friendID) { result in
+                switch result {
+                case .success(let friendInfoResponse):
+                    if let friend = friendInfoResponse.response.first {
+                        self.friendInfo = friend
+                        // Вывод полученных данных в консоль
+                        print("Информация о друге: \(friend)")
+                        DispatchQueue.main.async {
+                            self.collectionView.reloadData() // Перезагрузка данных коллекции после получения информации о друге
+                        }
+                    } else {
+                        // Обработка ситуации, если данные друга не были получены
+                    }
+                case .failure(let error):
+                    // Обработка ошибки при получении данных друга
+                    print("Ошибка получения данных друга: \(error)")
+                }
+            }
+        }
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1 // У нас будет одна ячейка для отображения информации о друге
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+
+        if let friend = friendInfo {
+            if let friendCell = cell as? FriendInfoCell {
+                friendCell.nameLabel.text = "Имя: \(friend.firstName)"
+                friendCell.lastNameLabel.text = "Фамилия: \(friend.lastName)"
+                return friendCell
+            }
+        }
+
+        // Обработка ситуации, если данные друга недоступны или не удалось создать кастомную ячейку
+        return cell
     }
 }
+
 //    var personImageView: UIImageView?
 
 //    override func viewDidAppear(_ animated: Bool) {
@@ -47,15 +99,7 @@ class ProfileViewController: UIViewController {
 //            })
 //        }
 //    }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//           super.viewWillAppear(animated)
-//           if let friendID = friendID {
-//               print("ID друга в ProfileViewController: \(friendID)")
-//               // Далее можно использовать friendID для загрузки и отображения информации о друге
-//               // Например, запрос к серверу по friendID и загрузка данных о друге
-//           }
-//       }
+
 
 
 
