@@ -76,6 +76,7 @@ class FriendsViewController: UITableViewController {
         // Получаем сохраненный ownerID из UserDefaults
         if let ownerID = UserDefaults.standard.string(forKey: "ownerID_\(userID)") {
             print("OwnerID:\(ownerID)")
+            profileViewController.ownerID = ownerID
             profileViewController.friendID = ownerID
         }
         profileViewController.token = self.token

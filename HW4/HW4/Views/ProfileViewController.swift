@@ -11,6 +11,7 @@ class ProfileViewController: UICollectionViewController {
 
     var friendID: String?
     var token: String?
+    var ownerID: String?
     var friendInfo: FriendInfo? // Переменная для хранения информации о друге
     let reuseIdentifier = "Cell"
 
@@ -28,6 +29,7 @@ class ProfileViewController: UICollectionViewController {
         collectionView.backgroundColor = .white
         collectionView.register(FriendInfoCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         fetchFriendInfo()
+        setupProfileSettingsButton()
     }
 
         // Загрузка информации о друге
@@ -53,6 +55,19 @@ class ProfileViewController: UICollectionViewController {
                 }
             }
         }
+    }
+    
+    func setupProfileSettingsButton() {
+           if let friendID = friendID, let ownerID = ownerID, friendID == ownerID {
+               // If the friendID matches the owner's ID, show the profile settings button
+               let settingsButton = UIBarButtonItem(title: "Настройки", style: .plain, target: self, action: #selector(profileSettingsButtonTapped))
+               navigationItem.rightBarButtonItem = settingsButton
+           }
+           // If IDs don't match, the button won't be displayed
+       }
+    
+    @objc private func profileSettingsButtonTapped() {
+        print("Кнопка нажата!")
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
