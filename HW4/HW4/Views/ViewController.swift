@@ -50,14 +50,17 @@ class ViewController: UIViewController, WKNavigationDelegate {
         
         // извлекаем токен и ID пользователя, если не получилось - сообщаем об ошибке
         if let token = params["access_token"], let userID = params["user_id"] {
+            UserDefaults.standard.set(userID, forKey: "ownerID_\(userID)")
+            UserDefaultsDebugger.printUserDefaults() // просмотр содержимого UserDefaults
             print("Token: \(token)")
             print("User ID: \(userID)")
             self.token = token
             self.userID = userID
             
         // создаем экземпляр tabBarController с полученным токеном
-            let tabBarController = TabBarController(token: token, userID: userID)
-
+        let tabBarController = TabBarController(token: token, userID: userID)
+            
+        // создаем экземпляр friendsViewController с полученным токеном
         let friendsViewController = FriendsViewController(token: token, userID: userID)
         self.navigationController?.pushViewController(friendsViewController, animated: true)
 

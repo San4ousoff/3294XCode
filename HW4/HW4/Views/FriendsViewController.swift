@@ -73,11 +73,15 @@ class FriendsViewController: UITableViewController {
     // при нажатии на кнопку Профиль, переходим в профиль владельца приложения, тк передаем его ID во вью Профиля
     @objc private func profileButtonTapped() {
         let profileViewController = ProfileViewController()
-        profileViewController.friendID = self.userID
+        // Получаем сохраненный ownerID из UserDefaults
+        if let ownerID = UserDefaults.standard.string(forKey: "ownerID_\(userID)") {
+            print("OwnerID:\(ownerID)")
+            profileViewController.friendID = ownerID
+        }
         profileViewController.token = self.token
-        //print(profileViewController.token)
         navigationController?.pushViewController(profileViewController, animated: true)
     }
+    
     // при нажатии на ячейку друга, переходим в профиль друга, тк передаем его ID во вью Профиля
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedFriend = friends[indexPath.row]
