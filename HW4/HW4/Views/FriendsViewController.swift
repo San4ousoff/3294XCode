@@ -10,7 +10,6 @@ import UIKit
 class FriendsViewController: UITableViewController {
     var token: String
     var userID: String
-    
     var friends: [Friend] = []
     let friendIDProvider = FriendIDProvider()
 
@@ -76,10 +75,10 @@ class FriendsViewController: UITableViewController {
         // Получаем сохраненный ownerID из UserDefaults
         if let ownerID = UserDefaults.standard.string(forKey: "ownerID_\(userID)") {
             print("OwnerID:\(ownerID)")
-            profileViewController.ownerID = ownerID
-            profileViewController.friendID = ownerID
+            profileViewController.ownerID = ownerID // Передаем ownerID в ownerID ProfileViewController
+            profileViewController.friendID = ownerID // Передаем ownerID в friendID ProfileViewController
         }
-        profileViewController.token = self.token
+        profileViewController.token = token  // Передаем токен в ProfileViewController
         navigationController?.pushViewController(profileViewController, animated: true)
     }
     

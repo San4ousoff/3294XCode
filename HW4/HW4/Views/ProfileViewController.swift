@@ -14,7 +14,7 @@ class ProfileViewController: UICollectionViewController {
     var ownerID: String?
     var friendInfo: FriendInfo? // Переменная для хранения информации о друге
     let reuseIdentifier = "Cell"
-
+    
     init() {
         let layout = UICollectionViewFlowLayout()
         super.init(collectionViewLayout: layout)
@@ -26,52 +26,51 @@ class ProfileViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.backgroundColor = .white
+        //collectionView.backgroundColor = .white
         collectionView.register(FriendInfoCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         fetchFriendInfo()
         setupProfileSettingsButton()
     }
 
-        // Загрузка информации о друге
-        func fetchFriendInfo() {
-            if let friendID = friendID, let token = token {
-                FriendInfoByIDManager.shared.token = token
-                FriendInfoByIDManager.shared.fetchFriendInfo(userID: friendID) { result in
-                switch result {
-                case .success(let friendInfoResponse):
-                    if let friend = friendInfoResponse.response.first {
-                        self.friendInfo = friend
-                        // Вывод полученных данных в консоль
-                        print("Информация о друге: \(friend)")
-                        DispatchQueue.main.async {
-                            self.collectionView.reloadData() // Перезагрузка данных коллекции после получения информации о друге
-                        }
-                    } else {
-                        // Обработка ситуации, если данные друга не были получены
+    /// Загрузка информации о друге
+    func fetchFriendInfo() {
+        if let friendID = friendID, let token = token {
+            FriendInfoByIDManager.shared.token = token
+            FriendInfoByIDManager.shared.fetchFriendInfo(userID: friendID) { result in
+            switch result {
+            case .success(let friendInfoResponse):
+                if let friend = friendInfoResponse.response.first {
+                    self.friendInfo = friend
+                    // Вывод полученных данных в консоль
+                    print("Информация о друге: \(friend)")
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData() // Перезагрузка данных коллекции после получения информации о друге
                     }
-                case .failure(let error):
-                    // Обработка ошибки при получении данных друга
-                    print("Ошибка получения данных друга: \(error)")
+                } else {
+                    // Обработка ситуации, если данные друга не были получены
+                }
+            case .failure(let error):
+                print("Ошибка получения данных друга: \(error)")
                 }
             }
         }
     }
     
     func setupProfileSettingsButton() {
-           if let friendID = friendID, let ownerID = ownerID, friendID == ownerID {
-               // If the friendID matches the owner's ID, show the profile settings button
-               let settingsButton = UIBarButtonItem(title: "Настройки", style: .plain, target: self, action: #selector(profileSettingsButtonTapped))
-               navigationItem.rightBarButtonItem = settingsButton
-           }
-           // If IDs don't match, the button won't be displayed
-       }
+        if friendID == ownerID {
+            let settingsButton = UIBarButtonItem(title: "Настройки", style: .plain, target: self, action: #selector(profileSettingsButtonTapped))
+            navigationItem.rightBarButtonItem = settingsButton
+        }
+    }
     
     @objc private func profileSettingsButtonTapped() {
-        print("Кнопка нажата!")
+        let settingsViewController = SettingsViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        settingsViewController.ownerID = ownerID  // Передача ownerID в SettingsViewController
+        navigationController?.pushViewController(settingsViewController, animated: true)
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1 // У нас будет одна ячейка для отображения информации о друге
+        return 1 // одна ячейка для отображения информации о друге
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -84,8 +83,6 @@ class ProfileViewController: UICollectionViewController {
                 return friendCell
             }
         }
-
-        // Обработка ситуации, если данные друга недоступны или не удалось создать кастомную ячейку
         return cell
     }
 }

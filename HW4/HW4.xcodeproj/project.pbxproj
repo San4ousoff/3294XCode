@@ -10,11 +10,13 @@
 		04663BED2B308CFF009CF68F /* FrendInfoByIDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04663BEC2B308CFF009CF68F /* FrendInfoByIDManager.swift */; };
 		04663BEF2B30904D009CF68F /* FriendInfoStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04663BEE2B30904D009CF68F /* FriendInfoStruct.swift */; };
 		0468541B2B317B51005245D3 /* FriendInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468541A2B317B51005245D3 /* FriendInfoCell.swift */; };
+		046954AB2B344A820048AFA0 /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046954AA2B344A820048AFA0 /* ThemeCell.swift */; };
 		047D09252B2C51B300A7B979 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D09242B2C51B300A7B979 /* ProfileViewController.swift */; };
 		047D092B2B2C6DE400A7B979 /* FriendIDProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D092A2B2C6DE300A7B979 /* FriendIDProvider.swift */; };
 		047D092D2B2C85D700A7B979 /* PhotoProfileByIDRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D092C2B2C85D700A7B979 /* PhotoProfileByIDRequestManager.swift */; };
-		048308362B32F33D00E2A093 /* DefaultUserStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048308352B32F33D00E2A093 /* DefaultUserStruct.swift */; };
 		048308382B330CF600E2A093 /* UserDefaultsDebugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048308372B330CF600E2A093 /* UserDefaultsDebugger.swift */; };
+		0483083A2B332C8600E2A093 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048308392B332C8600E2A093 /* AppTheme.swift */; };
+		0483083C2B332EEC00E2A093 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483083B2B332EEC00E2A093 /* SettingsViewController.swift */; };
 		048820502B262A630063C725 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488204F2B262A630063C725 /* AppDelegate.swift */; };
 		048820522B262A630063C725 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048820512B262A630063C725 /* SceneDelegate.swift */; };
 		048820542B262A630063C725 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048820532B262A630063C725 /* ViewController.swift */; };
@@ -41,11 +43,13 @@
 		04663BEC2B308CFF009CF68F /* FrendInfoByIDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrendInfoByIDManager.swift; sourceTree = "<group>"; };
 		04663BEE2B30904D009CF68F /* FriendInfoStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendInfoStruct.swift; sourceTree = "<group>"; };
 		0468541A2B317B51005245D3 /* FriendInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendInfoCell.swift; sourceTree = "<group>"; };
+		046954AA2B344A820048AFA0 /* ThemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
 		047D09242B2C51B300A7B979 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		047D092A2B2C6DE300A7B979 /* FriendIDProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendIDProvider.swift; sourceTree = "<group>"; };
 		047D092C2B2C85D700A7B979 /* PhotoProfileByIDRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoProfileByIDRequestManager.swift; sourceTree = "<group>"; };
-		048308352B32F33D00E2A093 /* DefaultUserStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUserStruct.swift; sourceTree = "<group>"; };
 		048308372B330CF600E2A093 /* UserDefaultsDebugger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDebugger.swift; sourceTree = "<group>"; };
+		048308392B332C8600E2A093 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		0483083B2B332EEC00E2A093 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0488204C2B262A630063C725 /* HW4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HW4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0488204F2B262A630063C725 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		048820512B262A630063C725 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,7 +123,7 @@
 				0488207D2B2638400063C725 /* GroupsStruct.swift */,
 				0488207F2B2638F40063C725 /* PhotoStruct.swift */,
 				04663BEE2B30904D009CF68F /* FriendInfoStruct.swift */,
-				048308352B32F33D00E2A093 /* DefaultUserStruct.swift */,
+				048308392B332C8600E2A093 /* AppTheme.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -143,6 +147,8 @@
 				048820732B26306D0063C725 /* PhotoCell.swift */,
 				047D09242B2C51B300A7B979 /* ProfileViewController.swift */,
 				0468541A2B317B51005245D3 /* FriendInfoCell.swift */,
+				0483083B2B332EEC00E2A093 /* SettingsViewController.swift */,
+				046954AA2B344A820048AFA0 /* ThemeCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -256,19 +262,21 @@
 				0488207A2B2635770063C725 /* FriendsStruct.swift in Sources */,
 				048820702B262DB70063C725 /* PhotoRequestManager.swift in Sources */,
 				047D09252B2C51B300A7B979 /* ProfileViewController.swift in Sources */,
+				046954AB2B344A820048AFA0 /* ThemeCell.swift in Sources */,
 				0488207C2B2635B70063C725 /* DataFetcher.swift in Sources */,
 				0488206A2B262CE70063C725 /* PhotoViewController.swift in Sources */,
 				048820722B262E4D0063C725 /* CardCollectionViewFlowLayout.swift in Sources */,
 				0488206C2B262D230063C725 /* FriendsRequestManager.swift in Sources */,
-				048308362B32F33D00E2A093 /* DefaultUserStruct.swift in Sources */,
 				047D092B2B2C6DE400A7B979 /* FriendIDProvider.swift in Sources */,
 				048820502B262A630063C725 /* AppDelegate.swift in Sources */,
 				048820522B262A630063C725 /* SceneDelegate.swift in Sources */,
+				0483083A2B332C8600E2A093 /* AppTheme.swift in Sources */,
 				0488206E2B262D800063C725 /* GroupsRequestManager.swift in Sources */,
 				04663BED2B308CFF009CF68F /* FrendInfoByIDManager.swift in Sources */,
 				048308382B330CF600E2A093 /* UserDefaultsDebugger.swift in Sources */,
 				048820762B2630B60063C725 /* ConstraintFactory.swift in Sources */,
 				048820782B2630E70063C725 /* TokenManager.swift in Sources */,
+				0483083C2B332EEC00E2A093 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -29,9 +29,23 @@ class ViewController: UIViewController, WKNavigationDelegate {
             let request = URLRequest(url: url)
             webView.load(request)
         }
+        
+//        if let savedUserID = UserDefaults.standard.getOwnerID() {
+//            let savedTheme = UserDefaults.standard.appTheme(forOwnerID: savedUserID)
+//            print("Тема для текущего владельца \(savedUserID): \(savedTheme)")
+//
+//            if savedTheme != .standard {
+//                applyAppWideTheme(savedTheme)
+//            } else {
+//                applyAppWideTheme(.standard)
+//            }
+//        } else {
+//            applyAppWideTheme(.standard)
+//        }
+
     }
     
-    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         guard let url = navigationResponse.response.url, url.path == "/blank.html", let fragment = url.fragment else {
             decisionHandler(.allow)
             return
@@ -51,12 +65,16 @@ class ViewController: UIViewController, WKNavigationDelegate {
         // извлекаем токен и ID пользователя, если не получилось - сообщаем об ошибке
         if let token = params["access_token"], let userID = params["user_id"] {
             UserDefaults.standard.set(userID, forKey: "ownerID_\(userID)")
-            UserDefaultsDebugger.printUserDefaults() // просмотр содержимого UserDefaults
-            print("Token: \(token)")
-            print("User ID: \(userID)")
+            //UserDefaultsDebugger.printUserDefaults() // просмотр содержимого UserDefaults
+            //print("Token: \(token)")
+            //print("User ID: \(userID)")
             self.token = token
             self.userID = userID
             
+            let savedTheme = UserDefaults.standard.appTheme(forOwnerID: userID)
+            print("Тема для текущего владельца \(userID): \(savedTheme)") // проверка темы, которую получаем для пользователя
+            applyAppWideTheme(savedTheme)
+        
         // создаем экземпляр tabBarController с полученным токеном
         let tabBarController = TabBarController(token: token, userID: userID)
             
@@ -72,3 +90,18 @@ class ViewController: UIViewController, WKNavigationDelegate {
         webView.removeFromSuperview()
     }
 }
+
+extension ViewController {
+    func applyAppWideTheme(_ theme: AppTheme?) {
+        DispatchQueue.main.async {
+            guard let window = UIApplication.shared.windows.first else { return }
+            if let theme = theme {
+                window.overrideUserInterfaceStyle = (theme == .dark) ? .dark : .light
+            } else {
+                // Обработка ситуации, если тема отсутствует. Здесь можно выполнить другие действия в зависимости от логики вашего приложения.
+            }
+        }
+    }
+}
+
+
