@@ -24,25 +24,10 @@ class ViewController: UIViewController, WKNavigationDelegate {
         view.addSubview(webView)
         webView.frame = view.bounds
         
-        // встраиваемое приложение
         if let url = URL(string: "https://oauth.vk.com/authorize?client_id=51810008&display=mobile&redirect_uri=https://oauth.vk.com/blank.html&scope=friends,groups,photos&response_type=token&v=5.35&state=123456") {
             let request = URLRequest(url: url)
             webView.load(request)
         }
-        
-//        if let savedUserID = UserDefaults.standard.getOwnerID() {
-//            let savedTheme = UserDefaults.standard.appTheme(forOwnerID: savedUserID)
-//            print("Тема для текущего владельца \(savedUserID): \(savedTheme)")
-//
-//            if savedTheme != .standard {
-//                applyAppWideTheme(savedTheme)
-//            } else {
-//                applyAppWideTheme(.standard)
-//            }
-//        } else {
-//            applyAppWideTheme(.standard)
-//        }
-
     }
     
      func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
@@ -98,7 +83,7 @@ extension ViewController {
             if let theme = theme {
                 window.overrideUserInterfaceStyle = (theme == .dark) ? .dark : .light
             } else {
-                // Обработка ситуации, если тема отсутствует. Здесь можно выполнить другие действия в зависимости от логики вашего приложения.
+                // Обработка ситуации, если тема отсутствует. 
             }
         }
     }

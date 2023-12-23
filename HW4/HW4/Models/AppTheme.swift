@@ -8,12 +8,11 @@
 import UIKit
 
 enum AppTheme: Int {
-    case standard, gray, dark
+    case standard, dark
 
     var backgroundColor: UIColor {
         switch self {
             case .standard: return UIColor.white
-            case .gray: return UIColor.yellow
             case .dark: return UIColor.black
         }
     }
@@ -21,7 +20,6 @@ enum AppTheme: Int {
     var textColor: UIColor {
         switch self {
             case .standard: return UIColor.black
-            case .gray: return UIColor.black
             case .dark: return UIColor.white
         }
     }
@@ -29,7 +27,6 @@ enum AppTheme: Int {
     var buttonColor: UIColor {
         switch self {
             case .standard: return UIColor.white
-            case .gray: return UIColor.yellow
             case .dark: return UIColor.white
         }
     }
