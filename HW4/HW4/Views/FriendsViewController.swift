@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class FriendsViewController: UITableViewController {
     var token: String
@@ -22,13 +23,14 @@ class FriendsViewController: UITableViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Друзья"
-        setupNavigationBar()
-        fetchFriends()
-    }
+        setupProfileBar()
+        fetchFriendsFromCoreData() // Добавлен вызов загрузки друзей из Core Data
+        fetchFriendsFromAPI() // Добавлен вызов загрузки друзей из API
+        }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return friends.count
@@ -49,23 +51,132 @@ class FriendsViewController: UITableViewController {
         return cell
     }
 
-    func fetchFriends() {
+    private func fetchFriendsFromAPI() {
         let friendsRequestManager = FriendsRequestManager.shared
         friendsRequestManager.token = token
+
         friendsRequestManager.fetchFriends { result in
             switch result {
             case .success(let fetchedFriends):
-                self.friends = fetchedFriends.sorted { ($0.isOnline != 0) && ($1.isOnline == 0) }
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+                self.saveFriendsToCoreData(fetchedFriends)
+
+                // вывод в консоль о количестве полученных записей для проверки
+//                let totalFriendsCount = fetchedFriends.count
+//                let onlineFriendsCount = fetchedFriends.filter { $0.isOnline != 0 }.count
+//                print("Всего друзей от API: \(totalFriendsCount), Online: \(onlineFriendsCount)")
+
             case .failure(let error):
-                print("Ошибка загрузки списка друзей: \(error)")
+                print("Ошибка загрузки списка друзей от API: \(error)")
             }
         }
     }
+
+    private func saveFriendsToCoreData(_ friends: [Friend]) {
+        let coreDataStack = CoreDataStack.shared
+        let context = coreDataStack.context
+
+        context.perform {
+            do {
+                let currentDate = Date() // Текущая дата и время
+                // Удаляем существующие записи
+                let fetchRequest: NSFetchRequest<FriendsEntity> = FriendsEntity.fetchRequest()
+                let existingFriends = try context.fetch(fetchRequest)
+                for friend in existingFriends {
+                    context.delete(friend)
+                }
+
+                // Добавляем новые записи из API
+                for friend in friends {
+                    let newFriend = FriendsEntity(context: context)
+                    newFriend.id = Int32(friend.id)
+                    newFriend.firstName = friend.firstName
+                    newFriend.lastName = friend.lastName
+                    newFriend.isOnline = Int32(friend.isOnline)
+                    newFriend.timestamp = currentDate // Сохраняем текущую дату и время в поле timestamp
+                }
+
+                coreDataStack.saveContext()
+                print("Информация о дате и времени на момент загрузки данных из API в Core Data:")
+                self.fetchLastUpdateDateFromCoreData() // Получение даты последнего обновления из Core Data
+            } catch {
+                print("Ошибка при сохранении данных в Core Data: \(error)")
+            }
+        }
+    }
+    
+    private func fetchFriendsFromCoreData() {
+        let coreDataStack = CoreDataStack.shared
+        let context = coreDataStack.context
+
+        context.perform {
+            do {
+                // Получаем время из Core Data перед получением самих данных
+                print("Информация о дате и времени на момент загрузки данных из Core Data:")
+                self.fetchLastUpdateDateFromCoreData()
+                
+                let fetchRequest: NSFetchRequest<FriendsEntity> = FriendsEntity.fetchRequest()
+                fetchRequest.sortDescriptors = [NSSortDescriptor(key: "isOnline", ascending: false)] // Сортировка по статусу онлайн
+                
+                let fetchedFriends = try context.fetch(fetchRequest)
+
+                var friendsData: [Friend] = []
+                for friend in fetchedFriends {
+                    friendsData.append(Friend(id: Int(friend.id), firstName: friend.firstName ?? "", lastName: friend.lastName ?? "", isOnline: Int(friend.isOnline)))
+                }
+                
+                // вывод в консоль о количестве полученных записей для проверки
+//                let totalFriendsCount = fetchedFriends.count
+//                let onlineFriendsCount = fetchedFriends.filter { $0.isOnline != 0 }.count
+//                print("Всего друзей из Core Data: \(totalFriendsCount), Online: \(onlineFriendsCount)")
+
+    //            for friend in fetchedFriends {
+    //                print("Friend: \(friend.firstName) \(friend.lastName), isOnline: \(friend.isOnline == 1 ? "Online" : "Offline")")
+    //            }
+                
+                DispatchQueue.main.async {
+                    self.friends = friendsData
+                    self.tableView.reloadData()
+                }
+
+            } catch {
+                print("Ошибка при извлечении данных из Core Data: \(error)")
+            }
+        }
+    }
+    
+    private func fetchLastUpdateDateFromCoreData() {
+        let coreDataStack = CoreDataStack.shared
+        let context = coreDataStack.context
+
+        context.perform {
+            let fetchRequest: NSFetchRequest<FriendsEntity> = FriendsEntity.fetchRequest()
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: false)] // Сортировка по полю timestamp для получения самого последнего изменения
+
+            do {
+                let lastUpdate = try context.fetch(fetchRequest).first?.timestamp
+                if let lastUpdate = lastUpdate {
+                    // Создаем DateFormatter
+                    let dateFormatter = DateFormatter()
+                    // Устанавливаем формат даты и времени
+                    dateFormatter.dateStyle = .medium
+                    dateFormatter.timeStyle = .medium
+                    // Подставляем часовой пояс устройства
+                    dateFormatter.timeZone = TimeZone.current
+                    // Выводим время с использованием настроенного DateFormatter
+                    print("Последнее обновление в Core Data: \(dateFormatter.string(from: lastUpdate))")
+                } else {
+                    print("Core Data пустая")
+                }
+            } catch {
+                print("Ошибка при извлечении даты последнего обновления из Core Data: \(error)")
+            }
+        }
+    }
+
+
+
     // кнопка Профиль в навигации
-    private func setupNavigationBar() {
+    private func setupProfileBar() {
         let profileButton = UIBarButtonItem(title: "Профиль", style: .plain, target: self, action: #selector(profileButtonTapped))
         navigationItem.rightBarButtonItem = profileButton
     }

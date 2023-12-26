@@ -37,6 +37,8 @@
 		0488207C2B2635B70063C725 /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488207B2B2635B70063C725 /* DataFetcher.swift */; };
 		0488207E2B2638400063C725 /* GroupsStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488207D2B2638400063C725 /* GroupsStruct.swift */; };
 		048820802B2638F40063C725 /* PhotoStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488207F2B2638F40063C725 /* PhotoStruct.swift */; };
+		048AFFB62B38528D00CD2B6F /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048AFFB52B38528D00CD2B6F /* CoreDataStack.swift */; };
+		048AFFBD2B38805C00CD2B6F /* FriendsDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 048AFFBB2B38805C00CD2B6F /* FriendsDataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +74,8 @@
 		0488207B2B2635B70063C725 /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
 		0488207D2B2638400063C725 /* GroupsStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsStruct.swift; sourceTree = "<group>"; };
 		0488207F2B2638F40063C725 /* PhotoStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStruct.swift; sourceTree = "<group>"; };
+		048AFFB52B38528D00CD2B6F /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		048AFFBC2B38805C00CD2B6F /* FriendsDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FriendsDataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,8 @@
 				048820582B262A720063C725 /* Assets.xcassets */,
 				0488205A2B262A720063C725 /* LaunchScreen.storyboard */,
 				0488205D2B262A720063C725 /* Info.plist */,
+				048AFFB52B38528D00CD2B6F /* CoreDataStack.swift */,
+				048AFFBB2B38805C00CD2B6F /* FriendsDataModel.xcdatamodeld */,
 			);
 			path = HW4;
 			sourceTree = "<group>";
@@ -257,12 +263,14 @@
 				048820542B262A630063C725 /* ViewController.swift in Sources */,
 				048820662B262C4D0063C725 /* FriendsViewController.swift in Sources */,
 				048820682B262C8E0063C725 /* GroupsViewController.swift in Sources */,
+				048AFFBD2B38805C00CD2B6F /* FriendsDataModel.xcdatamodeld in Sources */,
 				048820642B262B910063C725 /* TabBarController.swift in Sources */,
 				048820742B26306D0063C725 /* PhotoCell.swift in Sources */,
 				0488207A2B2635770063C725 /* FriendsStruct.swift in Sources */,
 				048820702B262DB70063C725 /* PhotoRequestManager.swift in Sources */,
 				047D09252B2C51B300A7B979 /* ProfileViewController.swift in Sources */,
 				046954AB2B344A820048AFA0 /* ThemeCell.swift in Sources */,
+				048AFFB62B38528D00CD2B6F /* CoreDataStack.swift in Sources */,
 				0488207C2B2635B70063C725 /* DataFetcher.swift in Sources */,
 				0488206A2B262CE70063C725 /* PhotoViewController.swift in Sources */,
 				048820722B262E4D0063C725 /* CardCollectionViewFlowLayout.swift in Sources */,
@@ -492,6 +500,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		048AFFBB2B38805C00CD2B6F /* FriendsDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				048AFFBC2B38805C00CD2B6F /* FriendsDataModel.xcdatamodel */,
+			);
+			currentVersion = 048AFFBC2B38805C00CD2B6F /* FriendsDataModel.xcdatamodel */;
+			path = FriendsDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 048820442B262A630063C725 /* Project object */;
 }
