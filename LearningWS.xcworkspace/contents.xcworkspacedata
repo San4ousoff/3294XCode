@@ -2,6 +2,15 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:HW1OCtask2/HW1OCtask2.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:HW1OCtask1/HW1OCtask1.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:CW1OC/CW1OC.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:CW6storyboard/CW6storyboard.xcodeproj">
    </FileRef>
    <FileRef
