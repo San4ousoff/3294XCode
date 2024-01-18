@@ -64,8 +64,10 @@ class ViewController: UIViewController, WKNavigationDelegate {
         let tabBarController = TabBarController(token: token, userID: userID)
             
         // создаем экземпляр friendsViewController с полученным токеном
-        let friendsViewController = FriendsViewController(token: token, userID: userID)
-        self.navigationController?.pushViewController(friendsViewController, animated: true)
+//        let friendsViewController = FriendsViewController(token: token, userID: userID)
+//        self.navigationController?.pushViewController(friendsViewController, animated: true)
+        let groupsViewController = GroupsViewController(token: token)
+        self.navigationController?.pushViewController(groupsViewController, animated: true)
 
         UIApplication.shared.windows.first?.rootViewController = tabBarController
         } else {

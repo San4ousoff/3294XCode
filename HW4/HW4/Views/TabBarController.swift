@@ -34,6 +34,8 @@ class TabBarController: UITabBarController {
         photoViewController.tabBarItem = UITabBarItem(title: "Photos", image: UIImage(systemName: "photo.circle"), tag: 2)
 
         viewControllers = [friendsViewController, groupsViewController, photoViewController]
+//        viewControllers = [groupsViewController, photoViewController]
+
         
     }
 }
