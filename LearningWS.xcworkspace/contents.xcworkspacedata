@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:HW4OC/HW4OC.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:CW3OC/CW3OC.xcodeproj">
    </FileRef>
    <FileRef
